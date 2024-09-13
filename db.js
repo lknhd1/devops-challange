@@ -8,8 +8,13 @@ let client;
 async function connectDB() {
   if (!client) {
     client = new MongoClient(uri);
-    await client.connect();
-    console.log('Connected to MongoDB');
+    try {
+      await client.connect();
+      console.log('Connected to MongoDB');
+    } catch (error) {
+      console.error('Error connecting to MongoDB:', error);
+      throw error; // Rethrow the error after logging it
+    }
   }
   return client.db(dbName);
 }
