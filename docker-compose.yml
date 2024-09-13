@@ -1,0 +1,44 @@
+version: '3'
+services:
+  # MongoDB service
+  mongodb:
+    image: mongo:7
+    container_name: mongodb-guestbook
+    environment:
+      MONGO_INITDB_DATABASE: guestbook
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - guestbook-network
+
+  # Guestbook Node.js app service
+  app:
+    build: .
+    container_name: guestbook-app
+    environment:
+      MONGODB_URI: mongodb://mongodb:27017
+      DB_PORT: 27017
+      DB_USER: guestuser
+      DB_PASSWORD: guestpassword
+      DB_NAME: guestbook
+      LISTEN_ADDRESS: 0.0.0.0
+      LISTEN_PORT: 3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+    networks:
+      - guestbook-network
+    volumes:
+      - .:/usr/src/app
+
+# Define a named volume for persisting MySQL data
+volumes:
+  mongodb-data:
+
+# Define the custom network
+networks:
+  guestbook-network:
+    driver: bridge
