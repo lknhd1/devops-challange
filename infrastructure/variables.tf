@@ -20,6 +20,11 @@ variable "app_name" {
   default     = "guestbook"
 }
 
+variable "service_sku_name" {
+  description = "SKU name used by the service plan"
+  type        = string
+}
+
 variable "repo_url" {
   description = "Repository URL for the app service to deploy from"
   type        = string
@@ -28,16 +33,4 @@ variable "repo_url" {
 variable "branch" {
   description = "Repository branch for the app service to deploy from"
   type        = string
-}
-
-
-variable "service_sku_name" {
-  description = "SKU name used by the service plan"
-  type        = string
-}
-
-variable "db_admin_username" {
-  description = "Database admin username"
-  type        = string
-  default     = "mysqladmin"
 }
