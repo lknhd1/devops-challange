@@ -1,1 +1,1 @@
-# Configure the variables on file terraform.tfvars
+# Infrastructure
