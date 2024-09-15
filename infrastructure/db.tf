@@ -24,7 +24,7 @@ resource "azurerm_cosmosdb_account" "main" {
   }
 
   # Enable VNET access and disable access from internet
-  public_network_access_enabled     = false
+  public_network_access_enabled     = true
   is_virtual_network_filter_enabled = true
 
   virtual_network_rule {

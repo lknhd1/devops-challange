@@ -24,13 +24,3 @@ variable "service_sku_name" {
   description = "SKU name used by the service plan"
   type        = string
 }
-
-variable "repo_url" {
-  description = "Repository URL for the app service to deploy from"
-  type        = string
-}
-
-variable "branch" {
-  description = "Repository branch for the app service to deploy from"
-  type        = string
-}
