@@ -18,15 +18,10 @@ services:
     build: .
     container_name: guestbook-app
     environment:
-      MONGODB_URI: mongodb://mongodb:27017
-      DB_PORT: 27017
-      DB_USER: guestuser
-      DB_PASSWORD: guestpassword
-      DB_NAME: guestbook
-      LISTEN_ADDRESS: 0.0.0.0
-      LISTEN_PORT: 3000
+      MONGODB_URI: mongodb://localhost:27017
+      LISTEN_PORT: 80
     ports:
-      - "3000:3000"
+      - "8000:80"
     depends_on:
       - mysql
     networks:
