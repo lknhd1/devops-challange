@@ -98,6 +98,8 @@ At this stage, the following resources will be provisioned:
 
 ### CI/CD Setup
 
+In this repository, CI/CD setup is configured using github workflow that are provided by the Azure App Service. The configuration is defined in this file: [main_guestbook-sea-app.yml](.github/workflows/main_guestbook-sea-app.yml)
+
 To set up CI/CD with your GitHub repository:
 
 1. Push the application source code to your GitHub account:
@@ -111,11 +113,11 @@ To set up CI/CD with your GitHub repository:
 3. Follow the instructions to link your GitHub repository. Ensure your Azure account is connected to GitHub.
 4. Azure will automatically update your GitHub repository with a deployment workflow located at `.github/workflows/<branch>_<app-name>.yaml`.
 5. The initial pipeline will start deploying the application. Future deployments can be triggered by pushing changes to the `main` branch, though it's recommended to use Pull Requests (PRs) for updates. Example PRs and pipelines:
-    - [Deploying new update](https://github.com/lknhd1/devops-challenge/pull/4)
-        - [Pipeline run](https://github.com/lknhd1/devops-challange/actions/runs/10858991043)
-    - [Reverting a change](https://github.com/lknhd1/devops-challenge/pull/5)
-        - [Pipeline run](https://github.com/lknhd1/devops-challange/actions/runs/10859074690)
+    - [PR](https://github.com/lknhd1/devops-challenge/pull/4)
+    - [Pipeline](https://github.com/lknhd1/devops-challange/actions/runs/10858991043)
 6. To roll back a deployment, use the GitHub PR **revert** option, which will create a new PR that, once merged, triggers a pipeline to deploy the reverted version.
+    - [PR](https://github.com/lknhd1/devops-challenge/pull/5)
+    - [Pipeline](https://github.com/lknhd1/devops-challange/actions/runs/10859074690)
 
 ### Monitoring
 
