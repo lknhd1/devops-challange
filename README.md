@@ -2,6 +2,8 @@
 
 This repository contains source code, Terraform configurations, and CI/CD setups for deploying a guestbook application (based on NodeJS 18) on the Azure cloud using Azure resources such as Cosmos DB, Virtual Networks, and Key Vault.
 
+The deployed version on my azure account and github repository is accessible on this URL: https://guestbook.lknhd.my.id/
+
 ## Table of Contents
 
 - [Overview](#overview)
@@ -149,3 +151,8 @@ There are two main options for scaling:
 
   1. Update the DNS CNAME to redirect traffic to the alternate region.
   2. Ensure that Azure Cosmos DB is configured with multi-region writes and automatic failover for seamless data replication and continuity.
+
+
+## Deployed version
+
+Here's the deployed version on my azure account and github repository guestbbok: https://guestbook.lknhd.my.id/
