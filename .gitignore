@@ -2,3 +2,4 @@
 .stfolder
 **/.terraform
 node_modules
+tmp
