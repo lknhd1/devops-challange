@@ -75,6 +75,12 @@ First, let's provision the infrastructure.
     terraform init
     ```
     
+3. Set your subscription ID and tenant ID via environment variable:
+    ```bash
+    export TF_VAR_subscription_id="<changeme>"
+    export TF_VAR_tenant_id="<changeme>"
+    ```
+
 4. Review the planned resource changes:
     
     ```bash
@@ -133,7 +139,8 @@ To set up CI/CD with your GitHub repository:
     1. Navigate to the **Custom Domains** section within your App Service in the Azure portal.
     2. Add your custom domain and follow the instructions to update your DNS provider with the provided CNAME and TXT records.
     3. Once the domain is verified, Azure will automatically provision a TLS certificate for the custom domain.
-
+- Other security measures:
+  - The CosmosDB instance is configured to be not accessible via internet, only app service subnet is whitelisted
 
 ### Scalability
 
