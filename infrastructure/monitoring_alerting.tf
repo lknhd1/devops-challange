@@ -1,29 +1,29 @@
-# Configure logs analytics workspace
-resource "azurerm_log_analytics_workspace" "main" {
-  name                = "${var.app_name}-law"
-  location            = var.region
+resource "azurerm_monitor_action_group" "main" {
+  name                = "email"
   resource_group_name = azurerm_resource_group.main.name
-  sku                 = "PerGB2018"
-  retention_in_days   = 30
+  short_name          = "email"
+
+  email_receiver {
+    name          = "lukman_alert"
+    email_address = "lknhd19-alerts@googlegroups.com"
+  }
 }
 
-# Define Diagnostic Settings for the Web App to send logs to Log Analytics Workspace
-resource "azurerm_monitor_diagnostic_setting" "main" {
-  name                       = "${var.app_name}-diagnostic-setting"
-  target_resource_id         = azurerm_linux_web_app.main.id
-  log_analytics_workspace_id = azurerm_log_analytics_workspace.main.id
+resource "azurerm_monitor_metric_alert" "cpu" {
+  name                = "cpu-usage-alert"
+  resource_group_name = azurerm_resource_group.main.name
+  scopes              = [azurerm_linux_web_app.main.id]
+  severity            = 3
 
-  enabled_log {
-    category = "AppServiceHTTPLogs"
+  criteria {
+    metric_namespace = "Microsoft.Web/sites"
+    metric_name      = "CpuTime"
+    aggregation      = "Total"
+    operator         = "GreaterThan"
+    threshold        = 50
   }
 
-  enabled_log {
-    category = "AppServiceAppLogs"
+  action {
+    action_group_id = azurerm_monitor_action_group.main.id
   }
-
-  metric {
-    category = "AllMetrics"
-  }
-
-  depends_on = [azurerm_linux_web_app.main]
 }
