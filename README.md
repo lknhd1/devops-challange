@@ -127,8 +127,8 @@ To set up CI/CD with your GitHub repository:
 
 ### Monitoring
 
-- **Alerts:** Configured in [`monitoring_alerting.tf`](https://www.notion.so/lknhd/infrastructure/monitoring_alerting.tf).
-- **Logs:** Collected in Azure Log Analytics as defined in [`monitoring_logging.tf`](https://www.notion.so/lknhd/infrastructure/monitoring_logging.tf).
+- **Alerts:** Configured in [`monitoring_alerting.tf`](./infrastructure/monitoring_alerting.tf).
+- **Logs:** Collected in Azure Log Analytics as defined in [`monitoring_logging.tf`](./infrastructure/monitoring_logging.tf).
 
 
 ### Security
